@@ -20,3 +20,29 @@
     </div>
   </div>
 {% endblock %}
+
+{% block script %}
+<script>
+  document.getElementById('profile-label').style.visibility = 'visible';
+  document.getElementById('profile-btn').style.visibility = 'visible';
+
+  if (document.getElementById('img')) {
+    document.getElementById('img').addEventListener('change', function(e) {
+      const formData = new FormData();
+      console.log(this, this.files);
+      
+      formData.append('img', this.files[0]);
+      axios.post('/user/profile', formData)
+        .then((res) => {
+          document.getElementById('profile-url').value = res.data.url;
+          document.getElementById('img-profile').src = res.data.url;
+          document.getElementById('img-profile').style.display = 'inline';
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+  }
+</script>
+{% endblock %}
+
