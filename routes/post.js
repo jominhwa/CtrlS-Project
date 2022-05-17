@@ -3,7 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const { Post, Hashtag } = require('../models');
+const { Post, Hashtag, User } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
@@ -58,6 +58,29 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
     console.error(error);
     next(error);
   }
+});
+
+router.post('/:id/like', async(req,res, next) => {
+  try {
+  const post = await Post.findOne({ where : { id : req.params.id } });
+  console.log('post 전달 - 아이디 검색 끝 ' );
+    await post.addLiker(req.user.id);
+    res.send('success');
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+router.delete('/:id/unlike', async(req,res, next) => {
+  try {
+    const post = await Post.findOne({ where : { id : req.params.id} });
+      await post.removeLiker(req.user.id);
+      res.send('success');
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
 });
 
 module.exports = router;

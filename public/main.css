@@ -88,7 +88,10 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   padding: 10px;
   position: relative;
   margin-bottom: 10px;
+  min-height: 100px;
 }
+
+
 .twit-author { display: inline-block; font-weight: bold; margin-right: 10px; }
 .twit-follow {
   padding: 1px 5px;
@@ -102,7 +105,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 
 .twit-more {
   position: relative;
-  float:right;
+  float : right;
   display: inline-block;
   padding: 0px 10px;
 
@@ -141,8 +144,44 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   cursor: pointer;
 }
 
+.twit-like {
+  position: absolute;
+  bottom : 30px;
+  right: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin-top: 20px;
+}
 
-.twit-img { text-align: center; }
+.twit-unlike {
+  position: absolute;
+  bottom : 30px;
+  right: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+.twit-liker-num {
+  position: absolute;
+  bottom : 5px;
+  right: 10px;
+}
+
+.twit-like-img {
+  height: 25px;
+  width: 25px;
+}
+
+
+
+
+.twit-img { text-align: center;}
 .twit-img img { max-width: 75%; }
 .error-message { color: red; font-weight: bold; }
 #search-form { text-align: right; }

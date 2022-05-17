@@ -42,7 +42,7 @@
               <div class="twit-more">
                 <img class="more-img" src="/img/more.png">
                 <div class="twit-more-content">
-                  <a href="{{twit.img}}" download>사진 저장하기</a>
+                  <a href="{{twit.img}}" download="image">사진 저장하기</a>
                   </div>
               </div>
             {% endif %}
@@ -51,6 +51,22 @@
             {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
             {% endif %}
+
+            
+            <!-- 좋아요 기능 -->
+            {% set likerIdList = [] %}
+            {% set test = twit.Liker %}
+              {% for i in twit.Liker %}
+                {% set likerIdList = (likerIdList.push(i.id), likerIdList) %}
+              {% endfor %}
+              
+              {% if not likerIdList.includes(user.id) and user.id %}
+               <button class="twit-like"><img class="twit-like-img" src="/img/heart.png"></button>
+             {% elif likerIdList.includes(user.id) and user %}
+              <button class="twit-unlike"><img class="twit-like-img" src="/img/heart_full.png"></button>
+             {% endif %}
+              <div class="twit-liker-num">좋아요 {{twit.Liker.length}}개</div>
+         
           </div>
         {% endfor %}
       </div>
@@ -95,12 +111,42 @@
         }
       });
     });
-    
-    document.getElementById('twit-more-content-imgSave').addEventListener('click', function (e) {
-      console.log('이미지 저장 클릭 ' + __dirname);
 
+    //좋아요 버튼 기능
+    document.querySelectorAll('.twit-like').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        console.log('클릭이벤트');
+        if (myId) {
+              var twitId = tag.parentNode.querySelector('.twit-id').value;
 
+              axios.post(`/post/${twitId}/like`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+        }
+      });
     });
 
+    //좋아요 취소
+    document.querySelectorAll('.twit-unlike').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        if (myId) {
+              var twitId = tag.parentNode.querySelector('.twit-id').value;
+
+              axios.delete(`/post/${twitId}/unlike`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+        }
+      });
+    });
   </script>
 {% endblock %}

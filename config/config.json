@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "prj-ctrlsdb",
-    "host": "127.0.0.1",
+    "password": "12341234",
+    "database": "Ctrl+S",
+    "host": "webframework.clrcunlvh8iv.us-west-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
