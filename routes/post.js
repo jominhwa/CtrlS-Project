@@ -75,6 +75,7 @@ router.post('/:id/like', async(req,res, next) => {
 router.delete('/:id/unlike', async(req,res, next) => {
   try {
     const post = await Post.findOne({ where : { id : req.params.id} });
+    console.log('post 전달 - 좋아요 취소 준비 ' );
       await post.removeLiker(req.user.id);
       res.send('success');
     } catch (err) {
