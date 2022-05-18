@@ -66,7 +66,6 @@
 
 {% block script %}
   <script>
-    getComment();
     if (document.getElementById('img')) {
       document.getElementById('img').addEventListener('change', function(e) {
         const formData = new FormData();
@@ -103,6 +102,7 @@
       });
     });
     // 댓글 로딩
+    getComment();
     async function getComment() {
       try {
         document.querySelectorAll('#comment-form').forEach( function(tag) {
@@ -146,32 +146,6 @@
       try {
         await axios.post('/comments', { id, comment, post });
         getComment();
-        // const comments = await axios.get('/comments', {params: { id: post }})
-        // .then((res) => {
-        //     //location.reload();
-        //     //console.log(res.data);
-        //     //tag.parentNode.querySelector('#commentall').value = res.data.comment[0];
-        //     const users = res.data;
-        //     const tbody = tag.parentNode.querySelector('#comment-list tbody');
-        //     tbody.innerHTML = '';
-        //     users.map(function (user) {
-        //       const row = document.createElement('tr');
-        //       // row.addEventListener('click', () => {
-        //       //   getComment(user.id);
-        //       // });
-        //       // 로우 셀 추가
-        //       let td = document.createElement('td');
-        //       td.textContent = user.commenter;
-        //       row.appendChild(td);
-        //       td = document.createElement('td');
-        //       td.textContent = user.comment;
-        //       row.appendChild(td);
-        //       tbody.appendChild(row);
-        //     });
-        //   })
-        //   .catch((err) => {
-        //     console.error(err);
-        //   });
       } catch (err) {
         console.error(err);
       }
