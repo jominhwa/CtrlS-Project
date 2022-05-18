@@ -1,5 +1,6 @@
 const express = require('express');
 const { Comment } = require('../models');
+const { Op } = require('sequelize');
 const router = express.Router();
 router.post('/', async (req, res, next) => {
 try {
@@ -9,6 +10,19 @@ comment: req.body.comment,
 postId: req.body.post,
 });
 console.log(comment);
+res.status(201).json(comment);
+} catch (err) {
+console.error(err);
+next(err);
+}
+});
+
+router.get('/', async (req, res, next) => {
+try {
+    console.log("ddddddddddddddddddddddddd"+req.query.id);
+const comment = await Comment.findAll({
+where: { postId: { [Op.eq]: req.query.id }, } ,
+});
 res.status(201).json(comment);
 } catch (err) {
 console.error(err);
