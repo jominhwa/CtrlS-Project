@@ -91,7 +91,10 @@
 
 {% block script %}
   <script>
-    getComment();
+    function showPopup(){
+      window.open("twit","글쓰기","width=400, height=150, top=10, left=10");
+    }
+
     if (document.getElementById('img')) {
       document.getElementById('img').addEventListener('change', function(e) {
         const formData = new FormData();
@@ -108,7 +111,6 @@
           });
       });
     }
-
 
     document.querySelectorAll(".twit-follow").forEach(function(tag) {
       tag.addEventListener('click', function() {
@@ -129,8 +131,6 @@
         }
       });
     });
-
-
 
     document.querySelectorAll(".twit-delete").forEach(function(tag) {
       tag.addEventListener('click', function() {
@@ -167,11 +167,26 @@
               }
             })
           });
-    
-    function showPopup(){
-      window.open("twit","글쓰기","width=400, height=150, top=10, left=10");
-    }
 
+    //좋아요 취소
+    document.querySelectorAll('.twit-unlike').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        if (myId) {
+              var twitId = tag.parentNode.querySelector('.twit-id').value;
+
+              axios.delete(`/post/${twitId}/unlike`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+        }
+      });
+    });
+
+    getComment();
     // 댓글 로딩
     async function getComment() {
       try {
@@ -216,56 +231,12 @@
       try {
         await axios.post('/comments', { id, comment, post });
         getComment();
-        // const comments = await axios.get('/comments', {params: { id: post }})
-        // .then((res) => {
-        //     //location.reload();
-        //     //console.log(res.data);
-        //     //tag.parentNode.querySelector('#commentall').value = res.data.comment[0];
-        //     const users = res.data;
-        //     const tbody = tag.parentNode.querySelector('#comment-list tbody');
-        //     tbody.innerHTML = '';
-        //     users.map(function (user) {
-        //       const row = document.createElement('tr');
-        //       // row.addEventListener('click', () => {
-        //       //   getComment(user.id);
-        //       // });
-        //       // 로우 셀 추가
-        //       let td = document.createElement('td');
-        //       td.textContent = user.commenter;
-        //       row.appendChild(td);
-        //       td = document.createElement('td');
-        //       td.textContent = user.comment;
-        //       row.appendChild(td);
-        //       tbody.appendChild(row);
-        //     });
-        //   })
-        //   .catch((err) => {
-        //     console.error(err);
-        //   });
       } catch (err) {
         console.error(err);
       }
       e.target.comment.value = '';
     });
   });
-
-    //좋아요 취소
-    document.querySelectorAll('.twit-unlike').forEach(function(tag) {
-      tag.addEventListener('click', function() {
-        const myId = document.querySelector('#my-id');
-        if (myId) {
-              var twitId = tag.parentNode.querySelector('.twit-id').value;
-
-              axios.delete(`/post/${twitId}/unlike`)
-                .then(() => {
-                  location.reload();
-                })
-                .catch((err) => {
-                  console.error(err);
-                });
-        }
-      });
-    });
   </script>
 
 {% endblock %}
