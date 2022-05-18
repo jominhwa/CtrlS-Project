@@ -35,7 +35,7 @@ router.get('/profile', isLoggedIn, async(req, res, next) => {
     next(err);
   }
   //res.render('profile', { title: 'Profile - prj-name' });
-});
+})
 
 router.get('/join', isNotLoggedIn, (req, res) => {
   res.render('join', { title: 'Join to - prj-name' });
@@ -48,6 +48,7 @@ router.get('/twit', isLoggedIn, (req, res) => {
 router.get('/closeModal',(req ,res) => {
   res.render('closeModal',{ title: 'twit to - prj-name'});
 });
+
 
 router.get('/', async (req, res, next) => {
   try {
@@ -91,3 +92,4 @@ router.get('/hashtag', async (req, res, next) => {
 });
 
 module.exports = router;
+

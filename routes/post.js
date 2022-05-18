@@ -7,6 +7,7 @@ const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 const User = require('../models/user');
 
+
 const router = express.Router();
 
 try {
@@ -54,12 +55,15 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       );
       await post.addHashtags(result.map(r => r[0]));
     }
+
     res.redirect('/closeModal');
+
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
+
 
 router.post('/:twitId/delete', isLoggedIn, async (req, res, next) => {
   try {
@@ -75,5 +79,22 @@ router.post('/:twitId/delete', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
+
+router.post('/:id/comments', async (req, res, next) => {
+  try {
+  const comments = await Comment.findAll({
+  include: {
+  model: User,
+  where: { id: req.params.id },
+  },
+  });
+  console.log(comments);
+  res.json(comments);
+  } catch (err) {
+  console.error(err);
+  next(err);
+  }
+  });
+
 
 module.exports = router;

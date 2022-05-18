@@ -4,7 +4,23 @@
     <div class="timeline">
       {% if user %}
         <div>
+
           <button id="twit-btn" type="button" class="btn" onclick="showPopup();">글쓰기</button>
+
+          <form id="twit-form" action="/post" method="post" enctype="multipart/form-data">
+            <div class="input-group">
+              <textarea id="twit" name="content" maxlength="140"></textarea>
+            </div>
+            <div class="img-preview">
+              <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+              <input id="img-url" type="hidden" name="url">
+            </div>
+            <div>
+              <label id="img-label" for="img">사진 업로드</label>
+              <input id="img" type="file" accept="image/*">
+              <button id="twit-btn" type="submit" class="btn">짹짹</button>
+            </div>
+          </form>
         </div>
       {% endif %}
       <div class="twits">
@@ -21,6 +37,7 @@
               <button class="twit-follow">팔로우하기</button>
             {% endif %}
             <div class="twit-content">{{twit.content}}</div>
+
             {% if twit.User.id == user.id %}
               <div class="twit-div"><button class="twit-delete">삭제</button></div>
             {% endif %}
@@ -51,6 +68,7 @@
           });
       });
     }
+
     document.querySelectorAll(".twit-follow").forEach(function(tag) {
       tag.addEventListener('click', function() {
         const myId = document.querySelector('#my-id');
@@ -70,6 +88,7 @@
         }
       });
     });
+
 
     document.querySelectorAll(".twit-delete").forEach(function(tag) {
       tag.addEventListener('click', function() {
@@ -91,5 +110,32 @@
     function showPopup(){
       window.open("twit","글쓰기","width=400, height=150, top=10, left=10");
     }
+
+    // 댓글 등록
+    //document.getElementById('comment-form').addEventListener('submit', (e) => {
+    document.querySelectorAll('#comment-form').forEach( function(tag) {
+    tag.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const id = document.querySelector('#my-nick').value;
+      const comment = tag.parentNode.querySelector('#comment').value;
+      const post = tag.parentNode.querySelector('.comments').value;
+      if (!comment) {
+        return alert('댓글을 입력하세요');
+      }
+      try {
+        await axios.post('/comments', { id, comment, post })
+        .then((res) => {
+            location.reload();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } catch (err) {
+        console.error(err);
+      }
+      e.target.comment.value = '';
+    });
+  });
+    
   </script>
 {% endblock %}
