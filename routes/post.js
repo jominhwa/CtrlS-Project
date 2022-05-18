@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const User = require('../models/user');
 
-const { Post, Hashtag, User } = require('../models');
+const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
 

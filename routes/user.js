@@ -5,8 +5,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const { isLoggedIn } = require('./middlewares');
-const User = require('../models/user');
 const { createBrotliCompress } = require('zlib');
 const Post = require('../models/post');
 

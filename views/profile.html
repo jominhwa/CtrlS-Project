@@ -7,7 +7,11 @@
         <h2>팔로잉 목록</h2>
         {% if user.Followings %}
           {% for following in user.Followings %}
-            <div>{{following.nick}}</div>
+          <div>
+            <input type="hidden" value="{{following.id}}" class="followings-cancel">
+            {{following.nick}}
+            <button class="following-cancel-btn">팔로잉 취소</button>
+            </div>
           {% endfor %}
         {% endif %}
       </div>
