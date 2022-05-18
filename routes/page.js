@@ -5,10 +5,12 @@ const { Post, User, Hashtag } = require('../models');
 const router = express.Router();
 
 router.use((req, res, next) => {
+  //전역변수
   res.locals.user = req.user;
   res.locals.followerCount = req.user ? req.user.Followers.length : 0;
   res.locals.followingCount = req.user ? req.user.Followings.length : 0;
   res.locals.followerIdList = req.user ? req.user.Followings.map(f => f.id) : [];
+  res.locals.likerIdList = req.post
   next();
 });
 
@@ -57,10 +59,14 @@ router.get('/closeModal',(req ,res) => {
 router.get('/', async (req, res, next) => {
   try {
     const posts = await Post.findAll({
-      include: {
+      include: [{
         model: User,
         attributes: ['id', 'nick'],
-      },
+      },{
+        model: User,
+        attributes : ['id', 'nick'],
+        as : 'Liker',
+      }],
       order: [['createdAt', 'DESC']],
     });
     res.render('main', {
@@ -82,7 +88,13 @@ router.get('/hashtag', async (req, res, next) => {
     const hashtag = await Hashtag.findOne({ where: { title: query } });
     let posts = [];
     if (hashtag) {
-      posts = await hashtag.getPosts({ include: [{ model: User }] });
+      posts = await hashtag.getPosts({ include: [{
+         model: User },{
+          model: User,
+          attributes : ['id', 'nick'],
+          as : 'Liker',
+        }
+        ] });
     }
 
     return res.render('main', {
@@ -96,4 +108,3 @@ router.get('/hashtag', async (req, res, next) => {
 });
 
 module.exports = router;
-

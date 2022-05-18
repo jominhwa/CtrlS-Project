@@ -2,10 +2,12 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-
-const { Post, Hashtag } = require('../models');
-const { isLoggedIn } = require('./middlewares');
 const User = require('../models/user');
+
+const { Post, Hashtag, User } = require('../models');
+const { isLoggedIn } = require('./middlewares');
+
+
 const router = express.Router();
 
 try {
@@ -94,5 +96,28 @@ router.post('/:id/comments', async (req, res, next) => {
   }
   });
 
+router.post('/:id/like', async(req,res, next) => {
+  try {
+  const post = await Post.findOne({ where : { id : req.params.id } });
+  console.log('post 전달 - 아이디 검색 끝 ' );
+    await post.addLiker(req.user.id);
+    res.send('success');
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+router.delete('/:id/unlike', async(req,res, next) => {
+  try {
+    const post = await Post.findOne({ where : { id : req.params.id} });
+    console.log('post 전달 - 좋아요 취소 준비 ' );
+      await post.removeLiker(req.user.id);
+      res.send('success');
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+});
 
 module.exports = router;

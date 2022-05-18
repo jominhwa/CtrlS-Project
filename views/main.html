@@ -19,6 +19,7 @@
             <input type="hidden" value="{{twit.User.id}}" class="twit-user-id">
             <input type="hidden" value="{{twit.id}}" class="twit-id">
 
+
             <div class="twit-author">
               <img id="small-profile" src="{{twit.profile}}" alt="프사" />
               <label id="nickname-label"> {{twit.User.nick}} </label>
@@ -27,6 +28,17 @@
             {% if not followerIdList.includes(twit.User.id) and twit.User.id !== user.id %}
               <button class="twit-follow">팔로우하기</button>
             {% endif %}
+
+             <!-- 더보기메뉴 - 사진저장 버튼 추가 -->
+             {% if twit.img %}
+             <div class="twit-more">
+               <img class="more-img" src="/img/more.png">
+               <div class="twit-more-content">
+                 <a href="{{twit.img}}" download="image">사진 저장하기</a>
+                 </div>
+             </div>
+           {% endif %}
+
             <div class="twit-content">{{twit.content}}</div>
 
             {% if twit.User.id == user.id %}
@@ -35,6 +47,21 @@
             {% if twit.img %}
               <div class="twit-img"><img src="{{twit.img}}" alt="섬네일"></div>
             {% endif %}
+
+            <!-- 좋아요 기능 -->
+            {% set likerIdList = [] %}
+            {% set test = twit.Liker %}
+              {% for i in twit.Liker %}
+                {% set likerIdList = (likerIdList.push(i.id), likerIdList) %}
+              {% endfor %}
+              
+              {% if not likerIdList.includes(user.id) and user.id %}
+               <button class="twit-like"><img class="twit-like-img" src="/img/heart.png"></button>
+             {% elif likerIdList.includes(user.id) and user %}
+              <button class="twit-unlike"><img class="twit-like-img" src="/img/heart_full.png"></button>
+             {% endif %}
+              <div class="twit-liker-num">좋아요 {{twit.Liker.length}}개</div>
+
           </div>
         {% endfor %}
       </div>
@@ -60,6 +87,7 @@
       });
     }
 
+
     document.querySelectorAll(".twit-follow").forEach(function(tag) {
       tag.addEventListener('click', function() {
         const myId = document.querySelector('#my-id');
@@ -81,6 +109,7 @@
     });
 
 
+
     document.querySelectorAll(".twit-delete").forEach(function(tag) {
       tag.addEventListener('click', function() {
         const myId = document.querySelector('#my-id');
@@ -94,10 +123,29 @@
             .catch((err) => {
               console.error(err);
             });
-        }
+          }
+        })
       });
-    });
 
+    //좋아요 버튼 기능
+    document.querySelectorAll('.twit-like').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        console.log('클릭이벤트');
+        if (myId) {
+              var twitId = tag.parentNode.querySelector('.twit-id').value;
+
+              axios.post(`/post/${twitId}/like`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+              }
+            })
+          });
+    
     function showPopup(){
       window.open("twit","글쓰기","width=400, height=150, top=10, left=10");
     }
@@ -127,7 +175,24 @@
       e.target.comment.value = '';
     });
   });
-    
+
+    //좋아요 취소
+    document.querySelectorAll('.twit-unlike').forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        const myId = document.querySelector('#my-id');
+        if (myId) {
+              var twitId = tag.parentNode.querySelector('.twit-id').value;
+
+              axios.delete(`/post/${twitId}/unlike`)
+                .then(() => {
+                  location.reload();
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+        }
+      });
+    });
   </script>
 
 {% endblock %}

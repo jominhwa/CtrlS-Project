@@ -102,6 +102,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   padding: 10px;
   position: relative;
   margin-bottom: 10px;
+  min-height: 100px;
 }
 
 .twit-div{
@@ -133,6 +134,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   font-size: 12px;
   cursor: pointer;
 }
+
 
 .img-profile {
   text-align: center;
@@ -192,6 +194,81 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   font-family: 'KoPubDotumMedium';
 }
 
+.twit-more {
+  position: relative;
+  float:right;
+  display: inline-block;
+  padding: 0px 10px;
+
+}
+
+.twit-more .more-img{
+  width:20px;
+  height:20px;
+  
+}
+.twit-more .twit-more-content{
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fafafa;
+  min-width: 160px;
+  box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.twit-more:hover .twit-more-content {
+  display: block;
+}
+
+.twit-more .twit-more-content a{
+  color: black;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.twit-more-content a:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.twit-like {
+  position: absolute;
+  bottom : 30px;
+  right: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin-top: 20px;
+}
+
+.twit-unlike {
+  position: absolute;
+  bottom : 30px;
+  right: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+.twit-liker-num {
+  position: absolute;
+  bottom : 5px;
+  right: 10px;
+}
+
+.twit-like-img {
+  height: 25px;
+  width: 25px;
+}
+
 @font-face {
   font-family: 'KoPubDotumMedium';
    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff');
@@ -225,6 +302,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 }
 
 .twit-img { text-align: center; }
+
 .twit-img img { max-width: 75%; }
 .error-message { color: red; font-weight: bold; }
 #search-form { text-align: right; }
