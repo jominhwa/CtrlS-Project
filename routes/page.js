@@ -12,6 +12,7 @@ router.use((req, res, next) => {
   next();
 });
 
+
 router.get('/profile', isLoggedIn, async(req, res, next) => {
   try {
     const posts = await Post.findAll({
@@ -37,6 +38,7 @@ router.get('/profile', isLoggedIn, async(req, res, next) => {
   //res.render('profile', { title: 'Profile - prj-name' });
 })
 
+
 router.get('/join', isNotLoggedIn, (req, res) => {
   res.render('join', { title: 'Join to - prj-name' });
 });
@@ -49,6 +51,8 @@ router.get('/closeModal',(req ,res) => {
   res.render('closeModal',{ title: 'twit to - prj-name'});
 });
 
+
+// 메인 페이지(게시글)
 
 router.get('/', async (req, res, next) => {
   try {

@@ -6,8 +6,6 @@ const fs = require('fs');
 const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 const User = require('../models/user');
-
-
 const router = express.Router();
 
 try {
@@ -36,13 +34,15 @@ router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
 });
 
 const upload2 = multer();
-router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
+
+router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => { // 게시글 등록 요청
   try {
     console.log(req.user);
     const post = await Post.create({
       content: req.body.content,
       img: req.body.url,
       UserId: req.user.id,
+      profile: req.user.profile,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
     if (hashtags) {
@@ -55,9 +55,7 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       );
       await post.addHashtags(result.map(r => r[0]));
     }
-
     res.redirect('/closeModal');
-
   } catch (error) {
     console.error(error);
     next(error);

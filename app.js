@@ -35,6 +35,9 @@ sequelize.sync({ force: false })
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/img', express.static(path.join(__dirname, 'uploads')));
+
+// 추가
+app.use('/profile', express.static(path.join(__dirname, 'profiles')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -54,6 +57,7 @@ app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/post', postRouter);
 app.use('/user', userRouter);
+
 app.use('/comments', commentsRouter);
 
 app.use((req, res, next) => {
