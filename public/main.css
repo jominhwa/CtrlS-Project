@@ -56,11 +56,6 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 #link-main {
   font-family: 'KoPubDotumMedium';
   text-decoration: none;
-  font-size : 14px;
-  color: #333;
-  border-radius: 4px;
-  border: 1px solid silver;
-  padding: 5px;
 }
 
 .user-name { font-weight: bold; font-size: 20px; text-align: center; font-family: 'S-CoreDream-6Bold'; }
@@ -290,7 +285,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   position: absolute;
   bottom : 5px;
   right: 10px;
-  font-family: 'S-CoreDream-3Light';
+  font-family: 'S-CoreDream-4Regular';
 }
 
 .twit-like-img {
@@ -305,6 +300,17 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 .comment-list-content{
   font-family: 'Nanum Gothic400';
 }
+
+#mainBtn {
+  height:45px;
+  width:45px;
+  background: no-repeat;
+  border: none;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+}
+
 @font-face {
   font-family: 'KoPubDotumMedium';
    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff');
@@ -337,6 +343,13 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'S-CoreDream-4Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .twit-img { text-align: center; }
 
 .twit-img img { max-width: 75%; }
@@ -344,7 +357,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 #search-form { text-align: right; }
 #join-form { padding: 10px; text-align: center; }
 #hashtag-form { text-align: right; margin-top: 10px; margin-bottom: 10px;}
-.btn { font-family: 'S-CoreDream-6Bold'; }
+.btn { font-family: 'S-CoreDream-4Regular'; }
 
 
 footer { text-align: center; }
