@@ -294,6 +294,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .comment-more {
   border: none;
   background: none;
@@ -391,6 +392,8 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   height: 37px;
   width: 40px;
 =======
+=======
+>>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
 .comment-list-th{
   font-family: 'S-CoreDream-6Bold';
 }
@@ -407,6 +410,9 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   position: fixed;
   bottom: 15px;
   left: 15px;
+<<<<<<< HEAD
+>>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
+=======
 >>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
 }
 
@@ -457,6 +463,10 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 #join-form { padding: 10px; text-align: center; }
 #hashtag-form { text-align: right; margin-top: 10px; margin-bottom: 10px;}
 .btn { font-family: 'S-CoreDream-4Regular'; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
 
 
 footer { text-align: center; }
