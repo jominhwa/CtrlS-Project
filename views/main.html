@@ -68,14 +68,14 @@
                 <button type="submit" class="comment-btn">등록</button>
                 <table id="comment-list">
                   <thead>
-                  <tr>
+                  <tr class="comment-list-th">
                     <th>아이디</th>
                     <th>댓글</th>
                   </tr>
                   </thead>
                   <tbody>
                     {% for comment in comments %}
-                    <tr>
+                    <tr class="comment-list-content">
                       <td>{{comment.commenter}}</td>
                       <td>{{comment.comment}}</td>
                     </tr>

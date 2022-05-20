@@ -25,8 +25,10 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   .container { width: 800px; margin: 0 auto; }
 }
 .input-group { margin-bottom: 15px; }
-.input-group label { width: 25%; display: inline-block; }
+.input-group label { width: 25%; display: inline-block; font-family: 'S-CoreDream-3Light' ; }
 .input-group input { width: 70%; }
+.input-button { font-family: 'S-CoreDream-6Bold' ;}
+.login-label { font-family: 'S-CoreDream-6Bold'; }
 .half { float: left; width: 50%; margin: 10px 0; cursor: pointer;}
 #join { float: right; }
 .profile-wrap {
@@ -34,6 +36,10 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   display: inline-block;
   vertical-align: top;
   margin: 10px 0;
+}
+
+.profile-post{
+  font-family: 'S-CoreDream-3Light';
 }
 @media screen and (min-width: 800px) {
   .profile-wrap { width: 290px; margin-bottom: 0; }
@@ -72,6 +78,11 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   padding: 10px;
   background: lightcoral;
   overflow: hidden;
+}
+
+.twit-content{
+  font-family: 'Nanum Gothic400';
+
 }
 #img-preview { max-width: 100%; }
 #img-label {
@@ -130,6 +141,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   color: crimson;
   font-size: 12px;
   cursor: pointer;
+  font-family: 'S-CoreDream-6Bold';
 }
 .follow_view{
   width:500px;
@@ -137,7 +149,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 
 }
 
-.twit-author { display: inline-block; font-weight: bold; margin-right: 10px; margin-bottom: 10px; }
+.twit-author { display: inline-block; font-weight: bold; margin-right: 10px; margin-bottom: 10px; font-family: 'S-CoreDream-6Bold'; }
 
 .twit-follow {
   padding: 1px 5px;
@@ -147,6 +159,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   color: crimson;
   font-size: 12px;
   cursor: pointer;
+  font-family: 'S-CoreDream-6Bold';
 }
 
 
@@ -230,6 +243,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 5px;
+  font-family: 'S-CoreDream-3Light'
 }
 
 .twit-more:hover .twit-more-content {
@@ -276,6 +290,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   position: absolute;
   bottom : 5px;
   right: 10px;
+  font-family: 'S-CoreDream-3Light';
 }
 
 .twit-like-img {
@@ -283,6 +298,13 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   width: 25px;
 }
 
+.comment-list-th{
+  font-family: 'S-CoreDream-6Bold';
+}
+
+.comment-list-content{
+  font-family: 'Nanum Gothic400';
+}
 @font-face {
   font-family: 'KoPubDotumMedium';
    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/KoPubDotumMedium.woff') format('woff');
@@ -321,7 +343,8 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 .error-message { color: red; font-weight: bold; }
 #search-form { text-align: right; }
 #join-form { padding: 10px; text-align: center; }
-#hashtag-form { text-align: right; margin-top: 10px; margin-bottom: 10px; }
+#hashtag-form { text-align: right; margin-top: 10px; margin-bottom: 10px;}
+.btn { font-family: 'S-CoreDream-6Bold'; }
 
 
 footer { text-align: center; }
