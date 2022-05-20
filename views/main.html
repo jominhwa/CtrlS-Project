@@ -11,7 +11,7 @@
       {% endif %}
       <div class="twits">
         <form id="hashtag-form" action="/hashtag">
-          <input type="text" name="hashtag" placeholder="태그 검색">
+          <input type="text" id="hashtag" name="hashtag" placeholder="태그 검색">
           <button class="btn">검색</button>
         </form>
         {% for twit in twits %}
@@ -72,26 +72,7 @@
                 <input type="hidden" value="{{twit.id}}" class="comments">
                 <div><input id="comment" type="text" placeholder="댓글">
                 <button type="submit" class="comment-btn">등록</button>
-<<<<<<< HEAD
                 </div>
-=======
-                <table id="comment-list">
-                  <thead>
-                  <tr class="comment-list-th">
-                    <th>아이디</th>
-                    <th>댓글</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    {% for comment in comments %}
-                    <tr class="comment-list-content">
-                      <td>{{comment.commenter}}</td>
-                      <td>{{comment.comment}}</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
             </form>
 
           </div>

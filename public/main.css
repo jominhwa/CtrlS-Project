@@ -157,6 +157,16 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   font-family: 'S-CoreDream-6Bold';
 }
 
+.following-cancel-btn{
+  padding: 1px 5px;
+    background: #fff;
+    border: 1px solid silver;
+    border-radius: 5px;
+    color: crimson;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'S-CoreDream-6Bold';
+}
 
 .img-profile {
   text-align: center;
@@ -293,13 +303,11 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   width: 25px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .comment-more {
   border: none;
   background: none;
   color: crimson;
+  font-family: 'Nanum Gothic400';
 }
 
 #comment-list {
@@ -338,10 +346,12 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 #td-id{
   width: 100%;
   color: lightcoral;
+  font-family: 'S-CoreDream-6Bold';
 }
 
 #td-comment {
   width: 100%;
+  font-family: 'Nanum Gothic400';
 }
 
 #td-edit, #td-remove {
@@ -354,10 +364,17 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   cursor: pointer;
   width: 40px;
   margin-bottom: 2px;
+  font-family: 'S-CoreDream-4Regular';
 }
 
-#comment, .comment-btn {
+#comment {
   margin: 10px 0 1px 0;
+  font-family: 'Nanum Gothic400';
+}
+
+.comment-btn {
+  margin: 10px 0 1px 0;
+  font-family: 'S-CoreDream-6Bold';
 }
 
 .twit-comment {
@@ -392,11 +409,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 .twit-comment-img {
   height: 37px;
   width: 40px;
-=======
-=======
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
-=======
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
+}
 .comment-list-th{
   font-family: 'S-CoreDream-6Bold';
 }
@@ -413,13 +426,6 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   position: fixed;
   bottom: 15px;
   left: 15px;
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
-=======
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
-=======
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
 }
 
 @font-face {
@@ -467,16 +473,8 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 .error-message { color: red; font-weight: bold; }
 #search-form { text-align: right; }
 #join-form { padding: 10px; text-align: center; }
-#hashtag-form { text-align: right; margin-top: 10px; margin-bottom: 10px;}
+#hashtag-form { text-align: right; margin-top: 10px; margin-bottom: 10px; }
 .btn { font-family: 'S-CoreDream-4Regular'; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
-
->>>>>>> e58b4dd960aafa32787ca09f386132b0abff39b9
-
+#hashtag{ font-family: 'Nanum Gothic400'; }
 
 footer { text-align: center; }
