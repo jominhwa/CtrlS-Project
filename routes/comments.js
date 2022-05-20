@@ -19,7 +19,6 @@ next(err);
 
 router.get('/', async (req, res, next) => {
 try {
-    console.log("ddddddddddddddddddddddddd"+req.query.id);
 const comment = await Comment.findAll({
 where: { postId: { [Op.eq]: req.query.id }, } ,
 });

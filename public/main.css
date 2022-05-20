@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; height: 100%; }
-.btn {
+.btn, .comment-btn {
   display: inline-block;
   padding: 0 5px;
   text-decoration: none;
@@ -237,7 +237,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 
 .twit-like {
   position: absolute;
-  bottom : 30px;
+  bottom: 25px;
   right: 24px;
   border: none;
   background: none;
@@ -267,6 +267,104 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 .twit-like-img {
   height: 25px;
   width: 25px;
+}
+
+.comment-more {
+  border: none;
+  background: none;
+  color: crimson;
+}
+
+#comment-list {
+  height: 50px;
+  border-spacing: 0;
+  display: block;
+  overflow: auto;
+}
+
+#comment-list tr {
+  white-space: pre-line;
+  word-break: break-all;
+  width: 100%;
+}
+
+#comment-list tr:nth-child(even) {
+  background-color:#FFFFFF;
+  color:#000000;
+}
+#comment-list tr:nth-child(odd) {
+  background-color:#f0808021;
+}
+
+#comment-list::-webkit-scrollbar {
+  width: 10px;
+}
+#comment-list::-webkit-scrollbar-thumb {
+  background-color: #fd8484;
+  border-radius: 10px;
+}
+#comment-list::-webkit-scrollbar-track {
+  background-color: #ffc4c4;
+  border-radius: 10px;
+}
+
+#td-id{
+  width: 100%;
+  color: lightcoral;
+}
+
+#td-comment {
+  width: 100%;
+}
+
+#td-edit, #td-remove {
+  padding: 1px 5px;
+  background: #fff;
+  border: 1px solid silver;
+  border-radius: 5px;
+  color: lightcoral;
+  font-size: 12px;
+  cursor: pointer;
+  width: 40px;
+  margin-bottom: 2px;
+}
+
+#comment, .comment-btn {
+  margin: 10px 0 1px 0;
+}
+
+.twit-comment {
+  position: absolute;
+  bottom: 36px;
+  right: 127px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  margin-top: 20px;
+}
+
+.twit-uncomment {
+  position: absolute;
+  bottom: 36px;
+  right: 127px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+.twit-comment-num {
+  position: absolute;
+  bottom: 5px;
+  right: 110px;
+}
+
+.twit-comment-img {
+  height: 37px;
+  width: 40px;
 }
 
 @font-face {
