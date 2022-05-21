@@ -7,7 +7,6 @@ const User = require('../models/user');
 const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
-
 const router = express.Router();
 
 try {
@@ -64,7 +63,6 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => { // ê²Œì
   }
 });
 
-
 router.post('/:twitId/delete', isLoggedIn, async (req, res, next) => {
   try {
     const user = await User.findOne({ where: { id: req.user.id } });
@@ -79,22 +77,6 @@ router.post('/:twitId/delete', isLoggedIn, async (req, res, next) => {
     next(error);
   }
 });
-
-router.post('/:id/comments', async (req, res, next) => {
-  try {
-  const comments = await Comment.findAll({
-  include: {
-  model: User,
-  where: { id: req.params.id },
-  },
-  });
-  console.log(comments);
-  res.json(comments);
-  } catch (err) {
-  console.error(err);
-  next(err);
-  }
-  });
 
 router.post('/:id/like', async(req,res, next) => {
   try {

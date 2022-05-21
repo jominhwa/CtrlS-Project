@@ -86,23 +86,6 @@
       window.open("twit","글쓰기","width=400, height=150, top=10, left=10");
     }
 
-    if (document.getElementById('img')) {
-      document.getElementById('img').addEventListener('change', function(e) {
-        const formData = new FormData();
-        console.log(this, this.files);
-        formData.append('img', this.files[0]);
-        axios.post('/post/img', formData)
-          .then((res) => {
-            document.getElementById('img-url').value = res.data.url;
-            document.getElementById('img-preview').src = res.data.url;
-            document.getElementById('img-preview').style.display = 'inline';
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      });
-    }
-
     document.querySelectorAll(".twit-follow").forEach(function(tag) {
       tag.addEventListener('click', function() {
         const myId = document.querySelector('#my-id');
