@@ -344,7 +344,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 }
 
 #td-id{
-  width: 100%;
+  width: 1000px;
   color: lightcoral;
   font-family: 'S-CoreDream-6Bold';
 }
@@ -477,4 +477,10 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
 .btn { font-family: 'S-CoreDream-4Regular'; }
 #hashtag{ font-family: 'Nanum Gothic400'; }
 
-footer { text-align: center; }
+footer { text-align: center; font-family: 'Nanum Gothic400'; margin: 10px; }
+
+.hr {
+  height: 0.8px;
+  background-color: #ffb1ae;
+  border: 0;
+}

@@ -61,8 +61,7 @@
               <button class="twit-unlike"><img class="twit-like-img" src="/img/heart_full.png"></button>
             {% endif %}
               <div class="twit-liker-num">좋아요 {{twit.Liker.length}}개</div>
-
-            <hr>
+            <hr class="hr">
             <table id="comment-list">
               <tbody>
               </tbody>
@@ -110,7 +109,7 @@
         if (myId) {
           const userId = tag.parentNode.querySelector('.twit-user-id').value;
           if (userId !== myId.value) {
-            if (confirm('팔로잉하시겠습니까?')) {
+            if (confirm('팔로우하시겠습니까?')) {
               axios.post(`/user/${userId}/follow`)
                 .then(() => {
                   location.reload();

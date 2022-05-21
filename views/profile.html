@@ -10,7 +10,7 @@
           <div>
             <input type="hidden" value="{{following.id}}" class="followings-cancel">
             {{following.nick}}
-            <button class="following-cancel-btn">팔로잉 취소</button>
+            <button class="following-cancel-btn">팔로우취소</button>
             </div>
           {% endfor %}
         {% endif %}
@@ -73,7 +73,7 @@
         if (myId) {
           const userId = tag.parentNode.querySelector('.followings-cancel').value;
           if (userId !== myId.value) {
-            if (confirm('팔로잉 취소하시겠습니까?')) {
+            if (confirm('팔로우 취소하시겠습니까?')) {
               axios.post(`/user/${userId}/followcancel`)
                 .then(() => {
                   location.reload();
